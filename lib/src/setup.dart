@@ -46,9 +46,17 @@ Future<void> setup({
     force: force,
   );
 
-  Process.runSync('task', ['diagnostics'], workingDirectory: home);
-  Process.runSync('taskd', ['diagnostics'],
-      environment: {'TASKDDATA': taskddata});
+  Process.runSync(
+    'task',
+    ['diagnostics'],
+    workingDirectory: home,
+    environment: {'HOME': home},
+  );
+  Process.runSync(
+    'taskd',
+    ['diagnostics'],
+    environment: {'TASKDDATA': taskddata},
+  );
 }
 
 Future<void> configure({
@@ -171,6 +179,7 @@ Future<void> taskwarrior({
         '$home/.task/${pem.value}',
       ],
       workingDirectory: home,
+      environment: {'HOME': home},
     );
   }
 
@@ -184,6 +193,7 @@ Future<void> taskwarrior({
       'localhost:53589',
     ],
     workingDirectory: home,
+    environment: {'HOME': home},
   );
 
   Process.runSync(
@@ -196,6 +206,7 @@ Future<void> taskwarrior({
       '$org/$user/$key',
     ],
     workingDirectory: home,
+    environment: {'HOME': home},
   );
   File('$home/.taskrc').writeAsStringSync(
     File('$home/.taskrc')
