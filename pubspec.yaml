@@ -1,10 +1,13 @@
 name: taskd_setup
+version: 0.0.0
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 executables:
   taskd-setup: taskd_setup
 
 dependencies:
- dcli:
+
+dev_dependencies:
+  test: ^1.16.8
