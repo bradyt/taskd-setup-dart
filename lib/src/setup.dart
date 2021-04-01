@@ -208,11 +208,6 @@ Future<void> taskwarrior({
     workingDirectory: home,
     environment: {'HOME': home},
   );
-  File('$home/.taskrc').writeAsStringSync(
-    File('$home/.taskrc')
-        .readAsStringSync()
-        .replaceAll(RegExp(r'=.\/'), '=$home/'),
-  );
 
   File('$pki/vars').writeAsStringSync(
     File('$pki/vars').readAsStringSync().replaceAll('CN=$cn', 'CN=localhost'),
